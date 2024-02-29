@@ -20,8 +20,9 @@
   <body>
     <!-- フォームのタイトル -->
     <div class="w-75 mx-auto">
-      <h1 class="mt-3">推しへの愛がAIチャットになる！</h1>
-
+      <h2 class="font-weight-bold mt-3">
+        推しへの愛が<br />AIチャットになる！
+      </h2>
       <p class="mt-4 mb-2">
         推しの情報を入力して、あなただけの推しAIを作ってチャットしてね！
         <br />
@@ -50,6 +51,7 @@
         </p>
         <textarea
           class="form-control w-100 mt-1"
+          style="height: 200px"
           name="oshi_info"
           required
         ></textarea>
@@ -82,6 +84,7 @@
         </p>
         <textarea
           class="form-control w-100 mt-1"
+          style="height: 200px"
           name="speaking_tone"
         ></textarea>
       </div>
@@ -92,6 +95,7 @@
         <p class="small text-muted mb-2">(例)・オネエ言葉<br /></p>
         <textarea
           class="form-control w-100 mt-1"
+          style="height: 200px"
           name="unused_words"
         ></textarea>
       </div>
@@ -105,10 +109,14 @@
           ・ライブ飢えてる<br />
           ・最終ゲネ行ってきます<br />
         </p>
-        <textarea class="form-control w-100 mt-1" name="dialogues"></textarea>
+        <textarea
+          class="form-control w-100 mt-1"
+          style="height: 200px"
+          name="dialogues"
+        ></textarea>
       </div>
-      <!-- 妄想ゾーン -->
-      <p class="mt-4 mb-2">推しとの妄想をかいてね！</p>
+      <!-- ===妄想ゾーン=== -->
+      <h5 class="font-weight-bold mt-4 mb-2">〜推しとの妄想をかいてね！〜</h5>
       <div>
         <p class="mt-4 mb-2">
           Q9.推しに言ってもらいたい言葉を箇条書きで書いてね！
@@ -121,6 +129,7 @@
         </p>
         <textarea
           class="form-control w-100 mt-1"
+          style="height: 200px"
           name="wanted_words"
         ></textarea>
       </div>
@@ -131,6 +140,7 @@
         </p>
         <textarea
           class="form-control w-100 mt-1"
+          style="height: 200px"
           name="relationship"
         ></textarea>
       </div>
@@ -139,6 +149,7 @@
         <p class="small text-muted mb-2">(例)・ひたすら煽ってください<br /></p>
         <textarea
           class="form-control w-100 mt-1"
+          style="height: 200px"
           name="wanted_action"
         ></textarea>
       </div>
@@ -149,7 +160,11 @@
         <p class="small text-muted mb-2">
           (例)・高校の時に○○くんが軽音部でギターやっていて、私がマネージャーでよく放課後に練習を見守っていた。<br />
         </p>
-        <textarea class="form-control w-100 mt-1" name="memories"></textarea>
+        <textarea
+          class="form-control w-100 mt-1"
+          style="height: 200px"
+          name="memories"
+        ></textarea>
       </div>
 
       <input type="submit" class="mt-4 btn btn-primary" value="送信" />
