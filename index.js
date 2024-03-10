@@ -40,7 +40,7 @@ const getOshiData = (accessToken) => {
     })
     .catch((err) => {
       console.log("err:", err);
-      sendText("取得に失敗しました。" + err);
+      sendText("取得に失敗しました。" + err + accessToken);
     });
 };
 
