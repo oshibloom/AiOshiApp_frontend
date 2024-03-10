@@ -15,6 +15,7 @@ const getOshiData = (accessToken) => {
     )
     .then((res) => {
       console.log("res:", res);
+      sendText("取得に成功しました。" + res);
       const resData = res.data.response_data;
       if ((resData.oshi_name.length = !0)) {
         // 取得したデータをフォームに表示
@@ -38,7 +39,7 @@ const getOshiData = (accessToken) => {
     })
     .catch((err) => {
       console.log("err:", err);
-      sendText("取得に失敗しました。");
+      sendText("取得に失敗しました。" + err);
     });
 };
 
@@ -99,17 +100,25 @@ $(document).ready(function () {
   initializeLiff(liffId);
   const textlist = [];
   // ログイン後、ユーザーのアクセストークンを取得
-  const accessToken = getAccessToken();
-  textlist.push(accessToken);
-  sendText(textlist);
-  // ユーザーの登録済みデータを取得
-  getOshiData(accessToken);
+  const accessToken = liff.getAccessToken();
+
+  console.log("textlist:" + textlist);
+
+  if (accessToken) {
+    textlist.push(accessToken);
+    // ユーザーの登録済みデータを取得
+    getOshiData(accessToken);
+  } else {
+    sendText(textlist);
+  }
 });
 
-getAccessToken = () => {
-  // ユーザーのアクセストークンを取得
-  return liff.getAccessToken();
-};
+// getAccessToken = () => {
+//   const textlist = [];
+//   console.log("textlist:" + textlist);
+//   // ユーザーのアクセストークンを取得
+//   return liff.getAccessToken();
+// };
 
 function initializeLiff(liffId) {
   console.log("initializeLiff");
@@ -167,7 +176,7 @@ $(function () {
     const wantedAction = $('textarea[name="wanted_action"]').val();
     const memories = $('textarea[name="memories"]').val();
 
-    const accessToken = getAccessToken();
+    const accessToken = liff.getAccessToken();
     // フォームのデータをAPIに渡して、データを登録
     upsertOshiData(
       accessToken,
