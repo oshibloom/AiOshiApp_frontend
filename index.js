@@ -104,19 +104,11 @@ $(document).ready(function () {
   liff.ready.then(() => {
     if (liff.isLoggedIn()) {
       const accessToken = liff.getAccessToken();
-      sendText("ログインしました。" + accessToken);
       // ユーザーの登録済みデータを取得
       getOshiData(accessToken);
     }
   });
 });
-
-// getAccessToken = () => {
-//   const textlist = [];
-//   console.log("textlist:" + textlist);
-//   // ユーザーのアクセストークンを取得
-//   return liff.getAccessToken();
-// };
 
 function initializeLiff(liffId) {
   console.log("initializeLiff");

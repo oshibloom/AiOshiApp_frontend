@@ -1,5 +1,5 @@
 /* ローディング画面 */
-/* #loading {
+#loading {
   width: 100vw;
   height: 100vh;
   transition: all 1s;
@@ -9,7 +9,7 @@
   top: 0;
   left: 0;
   z-index: 9999;
-} */
+}
 
 .loader,
 .loader:before,
