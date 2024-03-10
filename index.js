@@ -195,7 +195,7 @@ $(function () {
       wantedAction,
       memories
     );
-
+    
     return false;
   });
 });
