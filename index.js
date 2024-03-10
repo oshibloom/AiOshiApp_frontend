@@ -91,6 +91,7 @@ const upsertOshiData = (
     .then((res) => {
       // LINEにテキストを送信
       console.log("res:", res);
+      sendText(`${upsert_data.request_data.oshi_name}の情報を登録しました！`);
     })
     .catch((err) => {
       console.log("err:", err);
@@ -177,30 +178,24 @@ $(function () {
     const wantedAction = $('textarea[name="wanted_action"]').val();
     const memories = $('textarea[name="memories"]').val();
 
-    liff.ready.then(() => {
-      // liff.init()完了後に実行される処理
-      if (liff.isLoggedIn()) {
-        const accessToken = liff.getAccessToken();
-        // フォームのデータをAPIに渡して、データを登録
-        upsertOshiData(
-          accessToken,
-          oshiName,
-          oshiInfo,
-          nickname,
-          firstPerson,
-          secondPerson,
-          speakingTone,
-          unusedWords,
-          dialogues,
-          wantedWords,
-          relationship,
-          wantedAction,
-          memories
-        );
-      }
-    });
-
-    sendText("推しAI情報を登録しました！");
+    const accessToken = liff.getAccessToken();
+    // フォームのデータをAPIに渡して、データを登録
+    upsertOshiData(
+      accessToken,
+      oshiName,
+      oshiInfo,
+      nickname,
+      firstPerson,
+      secondPerson,
+      speakingTone,
+      unusedWords,
+      dialogues,
+      wantedWords,
+      relationship,
+      wantedAction,
+      memories
+    );
+    
     return false;
   });
 });
