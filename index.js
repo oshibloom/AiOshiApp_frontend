@@ -3,6 +3,9 @@ const headers = {
   "Access-Control-Allow-Origin": "*",
 };
 
+/**
+ * 推しAIデータを取得
+ */
 const getOshiData = (accessToken) => {
   // ユーザーのアクセストークンをAPIに渡して、データを取得
   const data = { access_token: accessToken };
@@ -42,6 +45,9 @@ const getOshiData = (accessToken) => {
     });
 };
 
+/**
+ * 推しAIデータを登録
+ */
 const upsertOshiData = (
   accessToken,
   oshiName,
@@ -84,9 +90,7 @@ const upsertOshiData = (
     )
     .then((res) => {
       // LINEにテキストを送信
-      console.log("データ登録完了しました。");
       console.log("res:", res);
-      sendText("データ登録完了しました。" + res);
     })
     .catch((err) => {
       console.log("err:", err);
@@ -98,7 +102,6 @@ const upsertOshiData = (
 $(document).ready(function () {
   const liffId = "2003651434-4K5ojBw6";
   initializeLiff(liffId);
-  const textlist = [];
   // ログイン後、ユーザーのアクセストークンを取得
   liff.ready.then(() => {
     // liff.init()完了後に実行される処理
@@ -110,6 +113,9 @@ $(document).ready(function () {
   });
 });
 
+/**
+ * LIFFの初期化
+ */
 function initializeLiff(liffId) {
   console.log("initializeLiff");
   liff
@@ -131,7 +137,9 @@ function initializeLiff(liffId) {
     });
 }
 
-// LINEにメッセージを送信
+/**
+ * LINEにテキストを送信、ウィンドウを閉じる
+ */
 function sendText(text) {
   liff
     .sendMessages([
@@ -151,6 +159,9 @@ function sendText(text) {
 const params = new URL(document.location).searchParams;
 const key = params.get("key");
 
+/**
+ * 送信ボタンを押した時の処理
+ */
 $(function () {
   $("form").submit(function () {
     const oshiName = $('input[name="oshi_name"]').val();
@@ -166,23 +177,6 @@ $(function () {
     const wantedAction = $('textarea[name="wanted_action"]').val();
     const memories = $('textarea[name="memories"]').val();
 
-    // const accessToken = liff.getAccessToken();
-    // // フォームのデータをAPIに渡して、データを登録
-    // upsertOshiData(
-    //   accessToken,
-    //   oshiName,
-    //   oshiInfo,
-    //   nickname,
-    //   firstPerson,
-    //   secondPerson,
-    //   speakingTone,
-    //   unusedWords,
-    //   dialogues,
-    //   wantedWords,
-    //   relationship,
-    //   wantedAction,
-    //   memories
-    // );
     liff.ready.then(() => {
       // liff.init()完了後に実行される処理
       if (liff.isLoggedIn()) {
@@ -206,7 +200,7 @@ $(function () {
       }
     });
 
-    sendText("登録完了しました！");
+    sendText("推しAI情報を登録しました！");
     return false;
   });
 });
