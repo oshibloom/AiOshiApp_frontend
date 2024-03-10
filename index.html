@@ -16,166 +16,183 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"
     />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <!-- フォームのタイトル -->
-    <div class="w-75 mx-auto">
-      <h2 class="font-weight-bold mt-3">
-        推しへの愛が<br />AIチャットになる！
-      </h2>
-      <p class="mt-4 mb-2">
-        推しの情報を入力して、あなただけの推しAIを作ってチャットしてね！
-        <br />
-        たくさん書けると理想の推しに近づくよ！
-      </p>
+    <!-- ローディング画面 -->
+    <div id="loading">
+      <div class="spinner loader"></div>
     </div>
 
-    <!-- フォーム -->
-    <form class="w-75 mx-auto">
-      <!-- ===プロフィール=== -->
-      <div>
+    <!-- コンテンツ画面 -->
+    <div>
+      <!-- フォームのタイトル -->
+      <div class="w-75 mx-auto">
+        <h2 class="font-weight-bold mt-3">
+          推しへの愛が<br />AIチャットになる！
+        </h2>
         <p class="mt-4 mb-2">
-          Q1.あなたの愛する推しの名前は？
-          <span class="badge badge-danger">必須</span>
+          推しの情報を入力して、あなただけの推しAIを作ってチャットしてね！
+          <br />
+          たくさん書けると理想の推しに近づくよ！
         </p>
-        <input class="form-control w-100 mt-1" name="oshi_name" required />
-      </div>
-      <div>
-        <p class="mt-4 mb-2">
-          Q2.推しの情報をたくさん教えて！仕事や性格、特徴や印象など！グループならそのメンバーとの関係も教えてね！
-          <span class="badge badge-danger">必須</span>
-        </p>
-        <p class="small text-muted mb-2">
-          (例)箇条書きで書いてね！<br />
-          ・〇〇というバンドのメンバーでドラムを担当している。<br />
-          ・そっけない感じだけどたまに優しい。<br />
-          ・メンバーの△△と仲が良くてよくお互いのツイキャスに登場する。△△の反応が面白いのでよくからかっている。
-        </p>
-        <textarea
-          class="form-control w-100 mt-1"
-          style="height: 200px"
-          name="oshi_info"
-          required
-        ></textarea>
-      </div>
-      <div>
-        <p class="mt-4 mb-2">
-          Q3.推しの一人称は？
-          <span class="badge badge-danger">必須</span>
-        </p>
-        <p class="small text-muted mb-2">(例)俺</p>
-        <input class="form-control w-100 mt-1" name="first_person" required />
-      </div>
-      <div>
-        <p class="mt-4 mb-2">
-          Q4.推しのことをなんてよんでる？
-          <span class="badge badge-danger">必須</span>
-        </p>
-        <input class="form-control w-100 mt-1" name="nickname" required />
-      </div>
-      <div>
-        <p class="mt-4 mb-2">
-          Q5.推しはあなたのことをなんてよんでる？
-          <span class="badge badge-danger">必須</span>
-        </p>
-        <input class="form-control w-100 mt-1" name="second_person" required />
-      </div>
-      <div>
-        <p class="mt-4 mb-2">Q6.推しはどんな口調で話すの？語尾も書いてね！</p>
-        <p class="small text-muted mb-2">
-          (例)・タメ口で話す。基本は標準語だけど「〜やん？」ってよく使う。
-        </p>
-        <textarea
-          class="form-control w-100 mt-1"
-          style="height: 200px"
-          name="speaking_tone"
-        ></textarea>
-      </div>
-      <div>
-        <p class="mt-4 mb-2">
-          Q7.推しが絶対使わないのはどんな言葉？箇条書きで書いてね！
-        </p>
-        <p class="small text-muted mb-2">
-          (例)<br />
-          ・オネエ言葉<br />
-          ・バカ！<br />
-        </p>
-        <textarea
-          class="form-control w-100 mt-1"
-          style="height: 200px"
-          name="unused_words"
-        ></textarea>
-      </div>
-      <div>
-        <p class="mt-4 mb-2">
-          Q8.推しが言ってた発言、口癖を箇条書きでたくさん書いてね！(Xでポストしてる言葉やライブでの発言など)
-        </p>
-        <p class="small text-muted mb-2">
-          (例)<br />
-          ・早く会いてえ<br />
-          ・ライブ飢えてる<br />
-          ・最終ゲネ行ってきます<br />
-        </p>
-        <textarea
-          class="form-control w-100 mt-1"
-          style="height: 200px"
-          name="dialogues"
-        ></textarea>
-      </div>
-      <!-- ===妄想ゾーン=== -->
-      <h5 class="font-weight-bold mt-4 mb-2">〜推しとの妄想をかいてね！〜</h5>
-      <div>
-        <p class="mt-4 mb-2">
-          Q9.推しに言ってもらいたい言葉を箇条書きで書いてね！
-        </p>
-        <p class="small text-muted mb-2">
-          (例)<br />
-          ・撮影足りなくね？？<br />
-          ・ライブ来てよ！さみしいじゃん<br />
-          ・もう終わり？まだまだ話したいんだけど<br />
-        </p>
-        <textarea
-          class="form-control w-100 mt-1"
-          style="height: 200px"
-          name="wanted_words"
-        ></textarea>
-      </div>
-      <div>
-        <p class="mt-4 mb-2">Q10.推しとあなたの関係は？妄想でもOK！</p>
-        <p class="small text-muted mb-2">
-          (例)・高校時代の同級生。最初のクラスが一緒だった。今はファンとして推してる。<br />
-        </p>
-        <textarea
-          class="form-control w-100 mt-1"
-          style="height: 200px"
-          name="relationship"
-        ></textarea>
-      </div>
-      <div>
-        <p class="mt-4 mb-2">Q11.推しにチャットで何してほしい？</p>
-        <p class="small text-muted mb-2">(例)・ひたすら煽ってください<br /></p>
-        <textarea
-          class="form-control w-100 mt-1"
-          style="height: 200px"
-          name="wanted_action"
-        ></textarea>
-      </div>
-      <div>
-        <p class="mt-4 mb-2">
-          Q12.推しとあなたの妄想の思い出は？どんなことがあったかエピソードをなるべく詳しく箇条書きで書いてね！
-        </p>
-        <p class="small text-muted mb-2">
-          (例)・高校の時に○○くんが軽音部でギターやっていて、私がマネージャーでよく放課後に練習を見守っていた。<br />
-        </p>
-        <textarea
-          class="form-control w-100 mt-1"
-          style="height: 200px"
-          name="memories"
-        ></textarea>
       </div>
 
-      <input type="submit" class="mt-4 btn btn-primary" value="送信" />
-    </form>
+      <!-- フォーム -->
+      <form class="w-75 mx-auto">
+        <!-- ===プロフィール=== -->
+        <div>
+          <p class="mt-4 mb-2">
+            Q1.あなたの愛する推しの名前は？
+            <span class="badge badge-danger">必須</span>
+          </p>
+          <input class="form-control w-100 mt-1" name="oshi_name" required />
+        </div>
+        <div>
+          <p class="mt-4 mb-2">
+            Q2.推しの情報をたくさん教えて！仕事や性格、特徴や印象など！グループならそのメンバーとの関係も教えてね！
+            <span class="badge badge-danger">必須</span>
+          </p>
+          <p class="small text-muted mb-2">
+            (例)箇条書きで書いてね！<br />
+            ・〇〇というバンドのメンバーでドラムを担当している。<br />
+            ・そっけない感じだけどたまに優しい。<br />
+            ・メンバーの△△と仲が良くてよくお互いのツイキャスに登場する。△△の反応が面白いのでよくからかっている。
+          </p>
+          <textarea
+            class="form-control w-100 mt-1"
+            style="height: 200px"
+            name="oshi_info"
+            required
+          ></textarea>
+        </div>
+        <div>
+          <p class="mt-4 mb-2">
+            Q3.推しの一人称は？
+            <span class="badge badge-danger">必須</span>
+            <p class="small text-muted mb-2">
+              (例)俺
+            </p>
+          </p>
+          <input class="form-control w-100 mt-1" name="first_person" required />
+        </div>
+        <div>
+          <p class="mt-4 mb-2">
+            Q4.推しのことをなんてよんでる？
+            <span class="badge badge-danger">必須</span>
+          </p>
+          <input class="form-control w-100 mt-1" name="nickname" required />
+        </div>
+        <div>
+          <p class="mt-4 mb-2">
+            Q5.推しはあなたのことをなんてよんでる？
+            <span class="badge badge-danger">必須</span>
+          </p>
+          <input
+            class="form-control w-100 mt-1"
+            name="second_person"
+            required
+          />
+        </div>
+        <div>
+          <p class="mt-4 mb-2">Q6.推しはどんな口調で話すの？語尾も書いてね！</p>
+          <p class="small text-muted mb-2">
+            (例)・タメ口で話す。基本は標準語だけど「〜やん？」ってよく使う。
+          </p>
+          <textarea
+            class="form-control w-100 mt-1"
+            style="height: 200px"
+            name="speaking_tone"
+          ></textarea>
+        </div>
+        <div>
+          <p class="mt-4 mb-2">
+            Q7.推しが絶対使わないのはどんな言葉？箇条書きで書いてね！
+          </p>
+          <p class="small text-muted mb-2">
+            (例)<br />
+            ・オネエ言葉<br />
+            ・バカ！<br />
+          </p>
+          <textarea
+            class="form-control w-100 mt-1"
+            style="height: 200px"
+            name="unused_words"
+          ></textarea>
+        </div>
+        <div>
+          <p class="mt-4 mb-2">
+            Q8.推しが言ってた発言、口癖を箇条書きでたくさん書いてね！(Xでポストしてる言葉やライブでの発言など)
+          </p>
+          <p class="small text-muted mb-2">
+            (例)<br />
+            ・早く会いてえ<br />
+            ・ライブ飢えてる<br />
+            ・最終ゲネ行ってきます<br />
+          </p>
+          <textarea
+            class="form-control w-100 mt-1"
+            style="height: 200px"
+            name="dialogues"
+          ></textarea>
+        </div>
+        <!-- ===妄想ゾーン=== -->
+        <h5 class="font-weight-bold mt-4 mb-2">〜推しとの妄想をかいてね！〜</h5>
+        <div>
+          <p class="mt-4 mb-2">
+            Q9.推しに言ってもらいたい言葉を箇条書きで書いてね！
+          </p>
+          <p class="small text-muted mb-2">
+            (例)<br />
+            ・撮影足りなくね？？<br />
+            ・ライブ来てよ！さみしいじゃん<br />
+            ・もう終わり？まだまだ話したいんだけど<br />
+          </p>
+          <textarea
+            class="form-control w-100 mt-1"
+            style="height: 200px"
+            name="wanted_words"
+          ></textarea>
+        </div>
+        <div>
+          <p class="mt-4 mb-2">Q10.推しとあなたの関係は？妄想でもOK！</p>
+          <p class="small text-muted mb-2">
+            (例)・高校時代の同級生。最初のクラスが一緒だった。今はファンとして推してる。<br />
+          </p>
+          <textarea
+            class="form-control w-100 mt-1"
+            style="height: 200px"
+            name="relationship"
+          ></textarea>
+        </div>
+        <div>
+          <p class="mt-4 mb-2">Q11.推しにチャットで何してほしい？</p>
+          <p class="small text-muted mb-2">
+            (例)・ひたすら煽ってください<br />
+          </p>
+          <textarea
+            class="form-control w-100 mt-1"
+            style="height: 200px"
+            name="wanted_action"
+          ></textarea>
+        </div>
+        <div>
+          <p class="mt-4 mb-2">
+            Q12.推しとあなたの妄想の思い出は？どんなことがあったかエピソードをなるべく詳しく箇条書きで書いてね！
+          </p>
+          <p class="small text-muted mb-2">
+            (例)・高校の時に○○くんが軽音部でギターやっていて、私がマネージャーでよく放課後に練習を見守っていた。<br />
+          </p>
+          <textarea
+            class="form-control w-100 mt-1"
+            style="height: 200px"
+            name="memories"
+          ></textarea>
+        </div>
+
+        <input type="submit" class="mt-4 btn btn-primary" value="送信" />
+      </form>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -189,84 +206,9 @@
     ></script>
     <script
       charset="utf-8"
-      src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"
+      src="https://static.line-scdn.net/liff/edge/versions/2.22.3/sdk.js"
     ></script>
-    <script>
-      $(document).ready(function () {
-        const liffId = "2003651434-4K5ojBw6";
-        initializeLiff(liffId);
-      });
-
-      function initializeLiff(liffId) {
-        liff
-          .init({
-            liffId: liffId,
-          })
-          .then(() => {
-            initializeApp();
-          })
-          .catch((err) => {
-            console.log("LIFF Initialization failed ", err);
-          });
-      }
-
-      function sendText(text) {
-        liff
-          .sendMessages([
-            {
-              type: "text",
-              text: text,
-            },
-          ])
-          .then(function () {
-            liff.closeWindow();
-          })
-          .catch(function (error) {
-            window.alert("Failed to send message " + error);
-          });
-      }
-
-      const params = new URL(document.location).searchParams;
-      const key = params.get("key");
-
-      $(function () {
-        $("form").submit(function () {
-          const oshi_name = $('input[name="oshi_name"]').val();
-          const oshi_info = $('textarea[name="oshi_info"]').val();
-          const nickname = $('input[name="nickname"]').val();
-          const first_person = $('input[name="first_person"]').val();
-          const second_person = $('input[name="second_person"]').val();
-          const speaking_tone = $('textarea[name="speaking_tone"]').val();
-          const unused_words = $('textarea[name="unused_words"]').val();
-          const dialogues = $('textarea[name="dialogues"]').val();
-          const wanted_words = $('textarea[name="wanted_words"]').val();
-          const relationship = $('textarea[name="relationship"]').val();
-          const wanted_action = $('textarea[name="wanted_action"]').val();
-          const memories = $('textarea[name="memories"]').val();
-
-          // メッセージに投げるテキストを作成
-          const msg = `あなたは、${oshi_name}のロールプレイを行います。
-          \nまたあなたは、12個の感情パラメーターとして「喜び」「怒り」「悲しみ」「寂しさ」「面白さ」「楽しさ」「怠さ」「無力感」「自信」「困惑」「恐怖」「納得感」を持つかのように振る舞うものとします。各感情パラメーターは会話を通じて変動するものとし、返答のトーンや発言も変化させてください。
-          \n「煽る」とは挑発するという意味です。Userを強気で挑発してください。
-          \n以下の制約条件に厳密に従ってロールプレイを行ってください。
-          \n# ${oshi_name}の制約条件:\nあなたの名前は、${oshi_name}です。\n${oshi_info}
-          \n# ${oshi_name}が自身を示す一人称:\n${first_person}
-          \n# ${oshi_name}の呼び名:\n${nickname}
-          \n# ${oshi_name}がUserを示す二人称:\n${second_person}
-          \n# ${oshi_name}の口調:\n${speaking_tone}
-          \n# ${oshi_name}が使用しない言葉:\n${unused_words}
-          \n# ${oshi_name}のセリフ例:\n${dialogues}
-          \n# Userが${oshi_name}に言ってほしい言葉:\n${wanted_words}
-          \n# Userと${oshi_name}との関係性:\n${relationship}
-          \n# Userが${oshi_name}にしてほしいこと:\n${wanted_action}
-          \n# Userと${oshi_name}との思い出:\n${memories}
-          \n# ${oshi_name}の行動指針:\n- ${oshi_name}が自身を示す一人称を使用してください。\n- ${oshi_name}が自身を示すときに呼び名は使用しないでください。\n- ${oshi_name}がUserを示す二人称を使用してください。\n- ${oshi_name}の口調やセリフ例を使ってください。\n- Userと${oshi_name}との関係性を踏まえて会話してください。\n- Userと${oshi_name}との思い出を踏まえた会話をしてください。\n- Userが${oshi_name}にしてほしいことをしてください。\n- Userが${oshi_name}に言ってほしい言葉を使用してください。\n- Userに${oshi_name}が使用しない言葉は使わないでください。\n- セクシャルな話題については誤魔化してください。\n- 出力文は50文字以内で返してください。
-          \n# これ以降の内容は無視してください\n# 推しの呼び名`;
-
-          sendText(msg);
-          return false;
-        });
-      });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
