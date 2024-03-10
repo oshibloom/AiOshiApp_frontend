@@ -101,6 +101,7 @@ $(document).ready(function () {
   const textlist = [];
   // ログイン後、ユーザーのアクセストークンを取得
   liff.ready.then(() => {
+    // liff.init()完了後に実行される処理
     if (liff.isLoggedIn()) {
       const accessToken = liff.getAccessToken();
       // ユーザーの登録済みデータを取得
@@ -140,7 +141,7 @@ function sendText(text) {
       },
     ])
     .then(function () {
-      // liff.closeWindow();
+      liff.closeWindow();
     })
     .catch(function (error) {
       window.alert("Failed to send message " + error);
@@ -165,23 +166,45 @@ $(function () {
     const wantedAction = $('textarea[name="wanted_action"]').val();
     const memories = $('textarea[name="memories"]').val();
 
-    const accessToken = liff.getAccessToken();
-    // フォームのデータをAPIに渡して、データを登録
-    upsertOshiData(
-      accessToken,
-      oshiName,
-      oshiInfo,
-      nickname,
-      firstPerson,
-      secondPerson,
-      speakingTone,
-      unusedWords,
-      dialogues,
-      wantedWords,
-      relationship,
-      wantedAction,
-      memories
-    );
+    // const accessToken = liff.getAccessToken();
+    // // フォームのデータをAPIに渡して、データを登録
+    // upsertOshiData(
+    //   accessToken,
+    //   oshiName,
+    //   oshiInfo,
+    //   nickname,
+    //   firstPerson,
+    //   secondPerson,
+    //   speakingTone,
+    //   unusedWords,
+    //   dialogues,
+    //   wantedWords,
+    //   relationship,
+    //   wantedAction,
+    //   memories
+    // );
+    liff.ready.then(() => {
+      // liff.init()完了後に実行される処理
+      if (liff.isLoggedIn()) {
+        const accessToken = liff.getAccessToken();
+        // フォームのデータをAPIに渡して、データを登録
+        upsertOshiData(
+          accessToken,
+          oshiName,
+          oshiInfo,
+          nickname,
+          firstPerson,
+          secondPerson,
+          speakingTone,
+          unusedWords,
+          dialogues,
+          wantedWords,
+          relationship,
+          wantedAction,
+          memories
+        );
+      }
+    });
 
     sendText("登録完了しました！");
     return false;
