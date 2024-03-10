@@ -36,11 +36,14 @@ const getOshiData = (accessToken) => {
       const spinner = document.getElementById("loading");
       spinner.classList.add("loaded");
 
-      sendText("取得に成功しました。" + res);
+      sendText("取得に成功しました。" + res.data);
+      sendText("取得に成功しました。" + res.data.response_data);
+      sendText("取得に成功しました。" + resData.oshi_name);
+      sendText("取得に成功しました。" + resData.oshi_info);
     })
     .catch((err) => {
       console.log("err:", err);
-      sendText("取得に失敗しました。" + err + accessToken);
+      sendText("取得に失敗しました。" + err);
     });
 };
 
@@ -88,10 +91,11 @@ const upsertOshiData = (
       // LINEにテキストを送信
       console.log("データ登録完了しました。");
       console.log("res:", res);
+      sendText("データ登録完了しました。" + res);
     })
     .catch((err) => {
       console.log("err:", err);
-      sendText("登録に失敗しました。");
+      sendText("登録に失敗しました。" + err);
     });
 };
 
