@@ -104,6 +104,7 @@ $(document).ready(function () {
   liff.ready.then(() => {
     if (liff.isLoggedIn()) {
       const accessToken = liff.getAccessToken();
+      sendText("ログインしました。" + accessToken);
       // ユーザーの登録済みデータを取得
       getOshiData(accessToken);
     }
@@ -148,7 +149,7 @@ function sendText(text) {
       },
     ])
     .then(function () {
-      liff.closeWindow();
+      // liff.closeWindow();
     })
     .catch(function (error) {
       window.alert("Failed to send message " + error);
