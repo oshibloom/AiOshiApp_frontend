@@ -91,7 +91,9 @@ const upsertOshiData = (
     .then((res) => {
       // LINEにテキストを送信
       console.log("res:", res);
-      sendText(`${upsert_data.request_data.oshi_name}の情報を登録しました！`);
+      sendText(
+        `あなたの「${upsert_data.request_data.oshi_name}」が完成したよ！${upsert_data.request_data.oshi_name}、話しかけてみて！`
+      );
     })
     .catch((err) => {
       console.log("err:", err);
