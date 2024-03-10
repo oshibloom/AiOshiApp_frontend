@@ -41,7 +41,7 @@ const getOshiData = (accessToken) => {
     })
     .catch((err) => {
       console.log("err:", err);
-      sendText("取得に失敗しました。" + err);
+      window.alert("取得に失敗しました。" + err);
     });
 };
 
@@ -95,7 +95,7 @@ const upsertOshiData = (
     })
     .catch((err) => {
       console.log("err:", err);
-      sendText("登録に失敗しました。" + err);
+      window.alert("登録に失敗しました。" + err);
     });
 };
 
@@ -195,7 +195,7 @@ $(function () {
       wantedAction,
       memories
     );
-    
+
     return false;
   });
 });
