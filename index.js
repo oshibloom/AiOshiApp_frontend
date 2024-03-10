@@ -97,8 +97,11 @@ const upsertOshiData = (
 $(document).ready(function () {
   const liffId = "2003651434-4K5ojBw6";
   initializeLiff(liffId);
+  const textlist = [];
   // ログイン後、ユーザーのアクセストークンを取得
   const accessToken = getAccessToken();
+  textlist.push(accessToken);
+  sendText(textlist);
   // ユーザーの登録済みデータを取得
   getOshiData(accessToken);
 });
