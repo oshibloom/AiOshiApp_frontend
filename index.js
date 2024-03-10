@@ -91,22 +91,7 @@ const upsertOshiData = (
     .then((res) => {
       // LINEにテキストを送信
       console.log("res:", res);
-      sendText(
-        "登録しました。" +
-          accessToken +
-          oshiName +
-          oshiInfo +
-          nickname +
-          firstPerson +
-          secondPerson +
-          speakingTone +
-          unusedWords +
-          dialogues +
-          wantedWords +
-          relationship +
-          wantedAction +
-          memories
-      );
+      sendText("登録しました。" + upsert_data.request_data.oshi_name);
     })
     .catch((err) => {
       console.log("err:", err);
@@ -233,7 +218,7 @@ $(function () {
       memories
     );
 
-    sendText(`${oshiName}の情報を登録しました！`);
+    // sendText(`${oshiName}の情報を登録しました！`);
     return false;
   });
 });
