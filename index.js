@@ -36,10 +36,10 @@ const getOshiData = (accessToken) => {
       const spinner = document.getElementById("loading");
       spinner.classList.add("loaded");
 
-      sendText("取得に成功しました。" + res.data);
-      sendText("取得に成功しました。" + res.data.response_data);
+      // sendText("取得に成功しました。" + res.data);
+      // sendText("取得に成功しました。" + res.data.response_data);
       sendText("取得に成功しました。" + resData.oshi_name);
-      sendText("取得に成功しました。" + resData.oshi_info);
+      // sendText("取得に成功しました。" + resData.oshi_info);
     })
     .catch((err) => {
       console.log("err:", err);
