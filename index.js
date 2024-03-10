@@ -15,7 +15,6 @@ const getOshiData = (accessToken) => {
     )
     .then((res) => {
       console.log("res:", res);
-      sendText("取得に成功しました。" + res);
       const resData = res.data.response_data;
       if ((resData.oshi_name.length = !0)) {
         // 取得したデータをフォームに表示
@@ -36,6 +35,8 @@ const getOshiData = (accessToken) => {
       // ロード画面を非表示
       const spinner = document.getElementById("loading");
       spinner.classList.add("loaded");
+
+      sendText("取得に成功しました。" + res);
     })
     .catch((err) => {
       console.log("err:", err);
@@ -100,17 +101,13 @@ $(document).ready(function () {
   initializeLiff(liffId);
   const textlist = [];
   // ログイン後、ユーザーのアクセストークンを取得
-  const accessToken = liff.getAccessToken();
-
-  console.log("textlist:" + textlist);
-
-  if (accessToken) {
-    textlist.push(accessToken);
-    // ユーザーの登録済みデータを取得
-    getOshiData(accessToken);
-  } else {
-    sendText(textlist);
-  }
+  liff.ready.then(() => {
+    if (liff.isLoggedIn()) {
+      const accessToken = liff.getAccessToken();
+      // ユーザーの登録済みデータを取得
+      getOshiData(accessToken);
+    }
+  });
 });
 
 // getAccessToken = () => {
