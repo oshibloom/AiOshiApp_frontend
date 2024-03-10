@@ -38,6 +38,7 @@ const getOshiData = (accessToken) => {
       // ロード画面を非表示
       const spinner = document.getElementById("loading");
       spinner.classList.add("loaded");
+      sendText("取得しました。" + resData.oshi_name);
     })
     .catch((err) => {
       console.log("err:", err);
@@ -91,6 +92,7 @@ const upsertOshiData = (
     .then((res) => {
       // LINEにテキストを送信
       console.log("res:", res);
+      sendText("登録しました。" + err);
     })
     .catch((err) => {
       console.log("err:", err);
